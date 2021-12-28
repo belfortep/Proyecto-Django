@@ -1,7 +1,8 @@
 # Proyecto-Django
 Primer proyecto completo con Django
 
-Gracias por ver mi primer proyecto, dejo escritas algunas cosas importantes en esta zona.
+
+Gracias por ver mi primer proyecto, cualquier critica o recomendación es bien aceptada, dejo escritas algunas cosas importantes en esta zona.
 
 Para iniciar, ir al directorio del proyecto y utilizar el comando python manage.py runserver
 Si desea entrar al panel de administración, hay un "SuperUsuario" con nombre de usuario paolo, y contraseña admin
