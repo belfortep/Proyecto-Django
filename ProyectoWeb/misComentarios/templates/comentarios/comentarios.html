@@ -1,0 +1,52 @@
+{% extends "ProyectoWebApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    {% if user.email != null %}
+
+    
+
+    <div class="contenedorFormulario">
+
+        
+    
+        <form action="" method="POST" style="text-align: center;">
+            {% csrf_token %}
+            <table style="color: blanchedalmond; margin: 20px auto">{{form.as_table}}</table>
+            <input type="submit" value="Enviar" >
+    
+        </form>
+    
+    </div>
+
+
+
+    {% endif %}
+
+    {% for comentario in comentarios %} 
+
+    <div class="contenedorFormulario" style="color:white">
+    <h1>{{comentario.mensaje}}</h1>
+    <h2>{{comentario.autor}}</h2>
+    <h2>{{comentario.created}}</h2>
+    
+    
+    {% if comentario.autor == user.username %}
+
+    <a href='{% url "misComentarios:eliminar" comentario.id %}' class='btn btn-success'>Eliminar</a>
+
+    
+    
+
+    {% endif %}
+</div>
+
+    {% endfor %}
+
+    
+    
+                
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "ProyectoWebApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="container">
+
+    <div style='float: right;'>
+        
+        
+
+        {% include 'carro/widget.html' %}
+    
+    </div>
+    {% if 'enviado' in request.GET %}
+
+        <h2 style="color:white; text-align: center; font-size: 3em;">Compra realizada con éxito</h2>
+
+    {% endif %}
+    {% if 'noEnviado' in request.GET %}
+
+        <h2 style="color:white; text-align: center; font-size: 3em;">Error al realizar la compra</h2>
+
+    {% endif %}
+
+    <div class="row">
+        
+{% if user.username != "" %}
+{% for producto in productos %} 
+
+    <div class="col-md-3">
+        <div class="card" style='margin:5px 5px;'>
+
+            <img src='{{producto.imagen.url}}' class="card-img-top">
+
+            <div class="card-body" style="text-align: center;">
+
+                <h6 class="card-title">{{producto.nombre}}</h6>
+
+                <p class="card-text">{{producto.precio}}$</p>
+
+
+
+            </div>
+
+            <div class='card-footer text-center'>
+                <a href='{% url "carro:agregar" producto.id %}' class='btn btn-success'>Agregar al carro</a>
+            </div>
+
+
+        </div>
+    </div>
+{% endfor %}
+{% endif %}
+{% if user.username == "" %}
+    <h2 style="color:white">Inicia sesión para ver la tienda</h2>
+{% endif %}
+
+</div>
+</div>
+{% endblock %}
